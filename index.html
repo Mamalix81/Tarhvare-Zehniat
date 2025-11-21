@@ -1073,7 +1073,7 @@
       progressValue.textContent = `${filled} / ${TOTAL_NUMBERS}`;
       progressFill.style.width = `${percentage}%`;
       progressStatus.textContent = filled === TOTAL_NUMBERS ? "آماده‌ی ثبت" : "در حال تکمیل";
-      submitBtn.disabled = false;
+      submitBtn.disabled = filled !== TOTAL_NUMBERS;
     };
 
     updateProgress();
@@ -1138,10 +1138,10 @@
         }
       });
 
-      //if (hasEmpty) {
-        //alert("لطفاً برای همه سوالات یک گزینه انتخاب کنید.");
-        //return;
-      //}
+      if (hasEmpty) {
+        alert("لطفاً برای همه سوالات یک گزینه انتخاب کنید.");
+        return;
+      }
 
       const scores = computeCategoryScores(answers);
       const testPayload = {
@@ -1503,5 +1503,6 @@
   </script>
 </body>
 </html>
+
 
 
